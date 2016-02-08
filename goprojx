@@ -1,0 +1,20 @@
+#!/bin/bash
+source $HOME/.local/lib/goprojx/goprojxcomplete.sh
+
+goprojx () {
+  while [ $# -gt 0 ]; do
+    arg=$1
+    case $arg in
+      $(ls $GOPATH/src/github.com/igaret))
+       cd $GOPATH/src/github.com/igaret/$arg
+      ;;
+      folderlist)
+        echo $(ls $GOPATH/src/github.com/igaret)
+      ;;
+      *)
+       echo "Project does not exist"
+      ;;
+    esac
+    shift
+  done
+}
